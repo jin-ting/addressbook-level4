@@ -67,10 +67,11 @@ public class StringUtilTest {
     }
 
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
-            Optional<String> errorMessage) {
+                                       Optional<String> errorMessage) {
         thrown.expect(exceptionClass);
         errorMessage.ifPresent(message -> thrown.expectMessage(message));
-        StringUtil.containsWordIgnoreCase(sentence, word);
+        StringUtil.containsNameIgnoreCase(sentence, word);
+        StringUtil.containsEmailIgnoreCase(sentence, word);
     }
 
     @Test
@@ -119,23 +120,49 @@ public class StringUtilTest {
     public void containsWordIgnoreCase_validInputs_correctResult() {
 
         // Empty sentence
-        assertFalse(StringUtil.containsWordIgnoreCase("", "abc")); // Boundary case
-        assertFalse(StringUtil.containsWordIgnoreCase("    ", "123"));
+        assertFalse(StringUtil.containsNameIgnoreCase("", "abc")); // Boundary case
+        assertFalse(StringUtil.containsNameIgnoreCase("    ", "123"));
 
         // Matches a partial word only
-        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc", "bb")); // Sentence word bigger than query word
-        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc", "bbbb")); // Query word bigger than sentence word
+        assertFalse(StringUtil.containsNameIgnoreCase("aaa bbb ccc", "bb")); // Sentence word bigger than query word
+        assertFalse(StringUtil.containsNameIgnoreCase("aaa bbb ccc", "bbbb")); // Query word bigger than sentence word
 
         // Matches word in the sentence, different upper/lower case letters
-        assertTrue(StringUtil.containsWordIgnoreCase("aaa bBb ccc", "Bbb")); // First word (boundary case)
-        assertTrue(StringUtil.containsWordIgnoreCase("aaa bBb ccc@1", "CCc@1")); // Last word (boundary case)
-        assertTrue(StringUtil.containsWordIgnoreCase("  AAA   bBb   ccc  ", "aaa")); // Sentence has extra spaces
-        assertTrue(StringUtil.containsWordIgnoreCase("Aaa", "aaa")); // Only one word in sentence (boundary case)
-        assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb ccc", "  ccc  ")); // Leading/trailing spaces
+        assertTrue(StringUtil.containsNameIgnoreCase("aaa bBb ccc", "Bbb")); // First word (boundary case)
+        assertTrue(StringUtil.containsNameIgnoreCase("aaa bBb ccc@1", "CCc@1")); // Last word (boundary case)
+        assertTrue(StringUtil.containsNameIgnoreCase("  AAA   bBb   ccc  ", "aaa")); // Sentence has extra spaces
+        assertTrue(StringUtil.containsNameIgnoreCase("Aaa", "aaa")); // Only one word in sentence (boundary case)
+        assertTrue(StringUtil.containsNameIgnoreCase("aaa bbb ccc", "  ccc  ")); // Leading/trailing spaces
 
         // Matches multiple words in sentence
-        assertTrue(StringUtil.containsWordIgnoreCase("AAA bBb ccc  bbb", "bbB"));
+        assertTrue(StringUtil.containsNameIgnoreCase("AAA bBb ccc  bbb", "bbB"));
     }
+
+
+
+    @Test
+    public void containsEmailIgnoreCase_validInputs_correctResult() {
+
+        // Empty sentence
+     assertFalse(StringUtil.containsEmailIgnoreCase("", "google.com")); // Boundary case
+    assertFalse(StringUtil.containsEmailIgnoreCase("    ", "yahoo.com"));
+
+
+        //Matches word in the sentence, different upper/lower case letters
+        assertTrue(StringUtil.containsEmailIgnoreCase("abc@example.com", "Example.com")); // Case insensitive
+        assertTrue(StringUtil.containsEmailIgnoreCase("abc@example.com", "ExaMPLE.com")); // Case insensitive
+        assertTrue(StringUtil.containsEmailIgnoreCase("abc@example.com", "EXAMPLE.COM")); // Case insensitive
+
+
+        //Matches email with multiple domain
+        assertTrue(StringUtil.containsEmailIgnoreCase("abc@example.com.sg", "example.com.sg"));
+        assertFalse(StringUtil.containsEmailIgnoreCase("abc@example.com", "example.com.sg"));
+
+        //Matches email of numeric domain
+        assertTrue(StringUtil.containsEmailIgnoreCase("abc@123.com", "123.com")); // number email domain
+
+    }
+
 
     //---------------- Tests for getDetails --------------------------------------
 
@@ -146,7 +173,7 @@ public class StringUtilTest {
     @Test
     public void getDetails_exceptionGiven() {
         assertThat(StringUtil.getDetails(new FileNotFoundException("file not found")),
-                   containsString("java.io.FileNotFoundException: file not found"));
+                containsString("java.io.FileNotFoundException: file not found"));
     }
 
     @Test

@@ -22,7 +22,7 @@ public class StringUtil {
      * @param sentence cannot be null
      * @param word cannot be null, cannot be empty, must be a single word
      */
-    public static boolean containsWordIgnoreCase(String sentence, String word) {
+    public static boolean containsNameIgnoreCase(String sentence, String word) {
         requireNonNull(sentence);
         requireNonNull(word);
 
@@ -38,6 +38,24 @@ public class StringUtil {
                 return true;
             }
         }
+        return false;
+    }
+
+
+    public static boolean containsEmailIgnoreCase(String emailSentence, String word) {
+        requireNonNull(emailSentence);
+        requireNonNull(word);
+
+        String preppedWord = word.trim();
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+
+        String preppedEmailSentence = emailSentence.substring(emailSentence.indexOf('@') + 1);
+
+            if (preppedEmailSentence.equalsIgnoreCase(preppedWord.toLowerCase())) {
+                return true;
+            }
+
         return false;
     }
 
