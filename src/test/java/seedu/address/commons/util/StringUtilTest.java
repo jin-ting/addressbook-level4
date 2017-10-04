@@ -66,7 +66,8 @@ public class StringUtilTest {
         assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
     }
 
-    //To run assertExceptionThrown
+    
+    //---------------- Tests for isUnsignedPositiveInteger --------------------------------------
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
         thrown.expect(exceptionClass);
