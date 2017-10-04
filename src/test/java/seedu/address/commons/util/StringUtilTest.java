@@ -66,6 +66,7 @@ public class StringUtilTest {
         assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
     }
 
+
     //---------------- assertExceptionThrown--------------------------------------
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
