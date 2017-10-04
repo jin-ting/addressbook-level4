@@ -67,7 +67,7 @@ public class StringUtilTest {
     }
 
 
-    //---------------- assertExceptionThrown--------------------------------------
+    //---------------- Tests for containsNameIgnoreCase --------------------------------------
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
         thrown.expect(exceptionClass);
