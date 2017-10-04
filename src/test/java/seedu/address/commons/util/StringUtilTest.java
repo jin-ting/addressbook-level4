@@ -53,7 +53,7 @@ public class StringUtilTest {
     }
 
 
-    //---------------- Tests for containsWordIgnoreCase --------------------------------------
+    //---------------- Tests for containsNameIgnoreCase --------------------------------------
 
     /*
      * Invalid equivalence partitions for word: null, empty, multiple words
@@ -62,9 +62,10 @@ public class StringUtilTest {
      */
 
     @Test
-    public void containsWordIgnoreCase_nullWord_throwsNullPointerException() {
+    public void containsNameIgnoreCase_nullWord_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
     }
+
 
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
@@ -75,19 +76,19 @@ public class StringUtilTest {
     }
 
     @Test
-    public void containsWordIgnoreCase_emptyWord_throwsIllegalArgumentException() {
+    public void containsNameIgnoreCase_emptyWord_throwsIllegalArgumentException() {
         assertExceptionThrown(IllegalArgumentException.class, "typical sentence", "  ",
                 Optional.of("Word parameter cannot be empty"));
     }
 
     @Test
-    public void containsWordIgnoreCase_multipleWords_throwsIllegalArgumentException() {
+    public void containsNameIgnoreCase_multipleWords_throwsIllegalArgumentException() {
         assertExceptionThrown(IllegalArgumentException.class, "typical sentence", "aaa BBB",
                 Optional.of("Word parameter should be a single word"));
     }
 
     @Test
-    public void containsWordIgnoreCase_nullSentence_throwsNullPointerException() {
+    public void containsNameIgnoreCase_nullSentence_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, null, "abc", Optional.empty());
     }
 
@@ -117,7 +118,7 @@ public class StringUtilTest {
      */
 
     @Test
-    public void containsWordIgnoreCase_validInputs_correctResult() {
+    public void containsNameIgnoreCase_validInputs_correctResult() {
 
         // Empty sentence
         assertFalse(StringUtil.containsNameIgnoreCase("", "abc")); // Boundary case
@@ -139,13 +140,12 @@ public class StringUtilTest {
     }
 
 
-
     @Test
     public void containsEmailIgnoreCase_validInputs_correctResult() {
 
         // Empty sentence
-     assertFalse(StringUtil.containsEmailIgnoreCase("", "google.com")); // Boundary case
-    assertFalse(StringUtil.containsEmailIgnoreCase("    ", "yahoo.com"));
+        assertFalse(StringUtil.containsEmailIgnoreCase("", "google.com")); // Boundary case
+        assertFalse(StringUtil.containsEmailIgnoreCase("    ", "yahoo.com"));
 
 
         //Matches word in the sentence, different upper/lower case letters
