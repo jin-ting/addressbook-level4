@@ -65,7 +65,7 @@ public class StringUtilTest {
     public void containsNameIgnoreCase_nullWord_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
     }
-    
+ 
     @Test
     public void containsEmailIgnoreCase_nullWord_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
