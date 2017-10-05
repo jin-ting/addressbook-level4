@@ -72,7 +72,13 @@ public class StringUtilTest {
     }
 
 
+    //---------------- Tests for containsNameIgnoreCase --------------------------------------
 
+    /*
+     * Invalid equivalence partitions for word: null, empty, multiple words
+     * Invalid equivalence partitions for sentence: null
+     * The four test cases below test one invalid input at a time.
+     */
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
         thrown.expect(exceptionClass);
