@@ -65,12 +65,14 @@ public class StringUtilTest {
     public void containsNameIgnoreCase_nullWord_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
     }
+    
+    @Test
+    public void containsEmailIgnoreCase_nullWord_throwsNullPointerException() {
+        assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
+    }
 
 
-    //---------------- Tests for assertExceptionThrown --------------------------------------
-    /*
-     *To test for asserException Thrown
-     */
+
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
         thrown.expect(exceptionClass);
