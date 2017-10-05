@@ -69,7 +69,7 @@ public class StringUtilTest {
 
     //---------------- Tests for assertExceptionThrown --------------------------------------
     /*
-     *
+     *To test for asserException Thrown
      */
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
