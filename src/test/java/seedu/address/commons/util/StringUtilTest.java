@@ -53,8 +53,7 @@ public class StringUtilTest {
     }
 
 
-    //---------------- Tests for containsNameIgnoreCase --------------------------------------
-
+    //----------- Tests for containsNameIgnoreCase and containsEmailIgnoreCase --------------
     /*
      * Invalid equivalence partitions for word: null, empty, multiple words
      * Invalid equivalence partitions for sentence: null
@@ -72,10 +71,8 @@ public class StringUtilTest {
     }
 
 
-    //---------------- assertExceptionThrown --------------------------------------
-
     /**
-     * Invalid equivalence partitions for word: null, empty, multiple words
+     * assertExceptionThrown
      */
     private void assertExceptionThrown(Class<? extends Throwable> exceptionClass, String sentence, String word,
                                        Optional<String> errorMessage) {
@@ -92,16 +89,27 @@ public class StringUtilTest {
     }
 
     @Test
+    public void containsEmailIgnoreCase_emptyWord_throwsIllegalArgumentException() {
+        assertExceptionThrown(IllegalArgumentException.class, "typical sentence", "  ",
+                Optional.of("Word parameter cannot be empty"));
+    }
+
+    @Test
     public void containsNameIgnoreCase_multipleWords_throwsIllegalArgumentException() {
         assertExceptionThrown(IllegalArgumentException.class, "typical sentence", "aaa BBB",
                 Optional.of("Word parameter should be a single word"));
     }
+
 
     @Test
     public void containsNameIgnoreCase_nullSentence_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, null, "abc", Optional.empty());
     }
 
+    @Test
+    public void containsEmailIgnoreCase_nullSentence_throwsNullPointerException() {
+        assertExceptionThrown(NullPointerException.class, null, "gmail.com", Optional.empty());
+    }
     /*
      * Valid equivalence partitions for word:
      *   - any word
