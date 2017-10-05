@@ -22,12 +22,12 @@ public class FindCommandParser implements Parser<FindCommand> {
      */
     public FindCommand parse(String args) throws ParseException {
         boolean findEmail = false;
-        String trimmedArgs = args.toLowerCase().trim();
+        String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
-        if (trimmedArgs.contains(".com")) {
+        if (trimmedArgs.toLowerCase().contains(".com")) {
             return new FindCommand(new EmailContainsKeywordsPredicate(Arrays.asList(trimmedArgs)));
         }
 
