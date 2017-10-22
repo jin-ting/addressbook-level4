@@ -12,7 +12,7 @@ endif::[]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :repoURL: https://github.com/CS2103AUG2017-T15-B2/main/tree/master
 
-By: `T15-B2`  `Aw Wen Hao2`  `Calvin Tantio`  `Cheng Jin Ting`  `Chung Tin Long`     Since: `Jun 2016`      Licence: `MIT`
+By: `T15-B2`      `Aw Wen Hao2`      `Calvin Tantio`      `Cheng Jin Ting`      `Chung Tin Long`       Since: `Jun 2016`      Licence: `MIT`
 
 == Setting up
 
