@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
+import static seedu.address.logic.commands.CalendarCommand.MESSAGE_DISPLAY_CALENDAR_SUCCESS;
 
 
 import org.junit.Rule;
@@ -14,13 +15,12 @@ import seedu.address.ui.testutil.EventsCollectorRule;
 public class CalendarCommandTest {
 
 
-    private static final long MESSAGE_DISPLAY_CALENDAR_SUCCESS = ;
     @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
 
 
     @Test
-    private void assertExecutionSuccess() throws CommandException {
+    public void assertExecutionSuccess() throws CommandException {
         CalendarCommand command = new CalendarCommand();
 
         try {
