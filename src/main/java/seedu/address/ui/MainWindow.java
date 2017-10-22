@@ -41,7 +41,7 @@ public class MainWindow extends UiPart<Region> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private BrowserPanel browserPanel;
+    private BrowserPanel browserPanel = new BrowserPanel();
     private PersonListPanel personListPanel;
     private Config config;
     private UserPrefs prefs;
@@ -207,6 +207,7 @@ public class MainWindow extends UiPart<Region> {
     public void handleCalendar() {
         CalendarWindow calendarWindow = new CalendarWindow();
         calendarWindow.show();
+        //browserPanel.loadPage("https://www.timeanddate.com/calendar/");
     }
 
 

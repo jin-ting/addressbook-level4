@@ -16,11 +16,11 @@ import seedu.address.commons.util.FxViewUtil;
  */
 public class CalendarWindow extends UiPart<Region> {
 
-    public static final String CALENDAR_URL_PATH = "https://teamup.com/ksgwd7ctgjmzeyzu23";
+    public static final String CALENDAR_URL = "https://www.timeanddate.com/calendar/";
 
     private static final Logger logger = LogsCenter.getLogger(CalendarWindow.class);
     private static final String ICON = "/images/calender.png";
-    private static final String FXML = "CalendarWindow.fxml";
+    private static final String FXML = "Calendar.fxml";
     private static final String TITLE = "Calendar";
 
     @FXML
@@ -36,8 +36,8 @@ public class CalendarWindow extends UiPart<Region> {
         dialogStage.setMaximized(true);
         FxViewUtil.setStageIcon(dialogStage, ICON);
 
-        String calendarUrl = getClass().getResource(CALENDAR_URL_PATH).toString();
-        browser.getEngine().load(calendarUrl);
+        String calendarUrl = getClass().getResource(FXML_FILE_FOLDER+ FXML).toString();
+        browser.getEngine().load(CALENDAR_URL);
     }
 
     /**
