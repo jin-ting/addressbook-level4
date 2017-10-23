@@ -1,14 +1,15 @@
 package guitests;
 
-import guitests.guihandles.CalendarWindowHandle;
-import guitests.guihandles.HelpWindowHandle;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
+
+import guitests.guihandles.CalendarWindowHandle;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CalendarCommand;
 import seedu.address.logic.commands.HelpCommand;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class CalendarWindowTest extends AddressBookGuiTest {
     private static final String ERROR_MESSAGE = "ATTENTION!!!! : On some computers, this test may fail when run on "
