@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.FxViewUtil;
 
+import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
+
 
 /**
  * Controller for a help page
@@ -17,7 +19,7 @@ import seedu.address.commons.util.FxViewUtil;
 public class CalendarWindow extends UiPart<Region> {
 
     public static final String CALENDAR_URL = "https://www.timeanddate.com/calendar/";
-
+    public static final String URL = "https://www.youtube.com/watch?v=r5yaoMjaAmE";
     private static final Logger logger = LogsCenter.getLogger(CalendarWindow.class);
     private static final String ICON = "/images/calender.png";
     private static final String FXML = "Calendar.fxml";
@@ -25,6 +27,7 @@ public class CalendarWindow extends UiPart<Region> {
 
     @FXML
     private WebView browser;
+
 
     private final Stage dialogStage;
 
@@ -35,8 +38,7 @@ public class CalendarWindow extends UiPart<Region> {
         dialogStage = createDialogStage(TITLE, null, scene);
         dialogStage.setMaximized(true);
         FxViewUtil.setStageIcon(dialogStage, ICON);
-
-        String calendarUrl = getClass().getResource(FXML_FILE_FOLDER+ FXML).toString();
+        //String calendarUrl = getClass().getResource(FXML_FILE_FOLDER+ FXML).toString();
         browser.getEngine().load(CALENDAR_URL);
     }
 
