@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.FxViewUtil;
 
-import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
-
 
 /**
  * Controller for a help page

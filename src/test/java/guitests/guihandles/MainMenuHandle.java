@@ -23,11 +23,22 @@ public class MainMenuHandle extends NodeHandle<Node> {
     }
 
     /**
+     * Opens the {@code HelpWindow} using the menu bar in {@code MainWindow}.
+     */
+    public void openCalendarWindowUsingMenu() {
+        clickOnMenuItemsSequentially("Calendar", "F2");
+    }
+
+    /**
      * Opens the {@code HelpWindow} by pressing the shortcut key associated
      * with the menu bar in {@code MainWindow}.
      */
     public void openHelpWindowUsingAccelerator() {
         guiRobot.push(KeyCode.F1);
+    }
+
+    public void openCalendarWindowUsingAccelerator() {
+        guiRobot.push(KeyCode.F2);
     }
 
     /**
