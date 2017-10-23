@@ -50,93 +50,92 @@ public class AddressBookParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-            case AddCommand.COMMAND_WORD:
+        case AddCommand.COMMAND_WORD:
+         //Fallthrough
+
+        case AddCommand.COMMAND_ALIAS:
+            return new AddCommandParser().parse(arguments);
+
+        case CalendarCommand.COMMAND_WORD:
+            //Fallthrough
+
+        case CalendarCommand.COMMAND_ALIAS:
+            return new CalendarCommand();
+
+        case EditCommand.COMMAND_WORD:
+            //Fallthrough
+
+        case EditCommand.COMMAND_ALIAS:
+            return new EditCommandParser().parse(arguments);
+
+        case LocateCommand.COMMAND_WORD:
+             //Fallthrough
+
+        case LocateCommand.COMMAND_ALIAS:
+            return new LocateCommandParser().parse(arguments);
+
+        case DeleteCommand.COMMAND_WORD:
+            //Fallthrough
+
+        case DeleteCommand.COMMAND_ALIAS:
+            return new DeleteCommandParser().parse(arguments);
+
+        case ClearCommand.COMMAND_WORD:
+            //Fallthrough
+
+        case ClearCommand.COMMAND_ALIAS:
+            return new ClearCommand();
+
+        case FindCommand.COMMAND_WORD:
                 //Fallthrough
 
-            case AddCommand.COMMAND_ALIAS:
-                return new AddCommandParser().parse(arguments);
+        case FindCommand.COMMAND_ALIAS:
+            return new FindCommandParser().parse(arguments);
 
-            case CalendarCommand.COMMAND_WORD:
+        case ListCommand.COMMAND_WORD:
                 //Fallthrough
 
-            case CalendarCommand.COMMAND_ALIAS:
-                return new CalendarCommand();
+        case ListCommand.COMMAND_ALIAS:
+            return new ListCommand();
 
-            case EditCommand.COMMAND_WORD:
-                //Fallthrough
+        case HistoryCommand.COMMAND_WORD:
+             //Fallthrough
 
-            case EditCommand.COMMAND_ALIAS:
-                return new EditCommandParser().parse(arguments);
+        case HistoryCommand.COMMAND_ALIAS:
+            return new HistoryCommand();
 
-            case LocateCommand.COMMAND_WORD:
-                //Fallthrough
+        case ExitCommand.COMMAND_WORD:
+             //Fallthrough
 
-            case LocateCommand.COMMAND_ALIAS:
-                return new LocateCommandParser().parse(arguments);
+        case ExitCommand.COMMAND_ALIAS:
+            return new ExitCommand();
 
-            case DeleteCommand.COMMAND_WORD:
-                //Fallthrough
+        case HelpCommand.COMMAND_WORD:
+              //Fallthrough
 
-            case DeleteCommand.COMMAND_ALIAS:
-                return new DeleteCommandParser().parse(arguments);
+        case HelpCommand.COMMAND_ALIAS:
+            return new HelpCommandParser().parse(arguments);
 
-            case ClearCommand.COMMAND_WORD:
-                //Fallthrough
+        case UndoCommand.COMMAND_WORD:
+             //Fallthrough
 
-            case ClearCommand.COMMAND_ALIAS:
-                return new ClearCommand();
+        case UndoCommand.COMMAND_ALIAS:
+            return new UndoCommand();
 
-            case FindCommand.COMMAND_WORD:
-                //Fallthrough
+        case RedoCommand.COMMAND_WORD:
+             //Fallthrough
 
-            case FindCommand.COMMAND_ALIAS:
-                return new FindCommandParser().parse(arguments);
+        case RedoCommand.COMMAND_ALIAS:
+            return new RedoCommand();
 
-            case ListCommand.COMMAND_WORD:
-                //Fallthrough
+        case CopyCommand.COMMAND_WORD:
+             //Fallthrough
 
-            case ListCommand.COMMAND_ALIAS:
-                return new ListCommand();
+        case CopyCommand.COMMAND_ALIAS:
+            return new CopyCommandParser().parse(arguments);
 
-            case HistoryCommand.COMMAND_WORD:
-                //Fallthrough
-
-            case HistoryCommand.COMMAND_ALIAS:
-                return new HistoryCommand();
-
-            case ExitCommand.COMMAND_WORD:
-                //Fallthrough
-
-            case ExitCommand.COMMAND_ALIAS:
-                return new ExitCommand();
-
-            case HelpCommand.COMMAND_WORD:
-                //Fallthrough
-
-            case HelpCommand.COMMAND_ALIAS:
-                return new HelpCommandParser().parse(arguments);
-
-            case UndoCommand.COMMAND_WORD:
-                //Fallthrough
-
-            case UndoCommand.COMMAND_ALIAS:
-                return new UndoCommand();
-
-            case RedoCommand.COMMAND_WORD:
-                //Fallthrough
-
-            case RedoCommand.COMMAND_ALIAS:
-                return new RedoCommand();
-
-            case CopyCommand.COMMAND_WORD:
-                //Fallthrough
-
-            case CopyCommand.COMMAND_ALIAS:
-                return new CopyCommandParser().parse(arguments);
-
-
-            default:
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 
