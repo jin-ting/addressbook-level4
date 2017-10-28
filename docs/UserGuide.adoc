@@ -103,8 +103,6 @@ Examples:
 * `help add` (using command word)
 * `help a` (using alias)
 
-
-=== Adding a person:
 === Adding a person: `add`
 
 Alias: `a`
