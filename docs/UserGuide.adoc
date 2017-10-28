@@ -103,7 +103,7 @@ Examples:
 * `help add` (using command word)
 * `help a` (using alias)
 
-=== Adding a person:`add`
+=== Adding a person: `add`
 
 Alias: `a`
 
