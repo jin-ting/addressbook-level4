@@ -1,6 +1,10 @@
 package seedu.address.ui;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URI;
 import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
@@ -75,10 +79,26 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     /**
-     * Opens the email window in the browser panel.
+     * Opens the email window in the browser panel for windows or Ubuntu.
      */
     public void loadEmail() {
-        loadPage("https://www.google.com/gmail/");
+        String url = "https://www.google.com/gmail/";
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(url));
+            } catch (URISyntaxException | IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec(url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //loadPage("https://www.google.com/gmail/");
     }
 
     /**
