@@ -31,7 +31,7 @@ public class EmailCommand extends Command {
             + "Parameters: INDEX "
             + MESSAGE_GET_MORE_HELP;
 
-    public static final String MESSAGE_DISPLAY_EMAIL_SUCCESS = "Sending email to  %1$d person(s)";
+    public static final String MESSAGE_DISPLAY_EMAIL_SUCCESS = "Email send to %1$s";
 
     private Set<String> recipientSet = new HashSet<>();
 
@@ -64,8 +64,7 @@ public class EmailCommand extends Command {
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.MAIL)) {
                 try {
-                    String test = "mailto:" + recipientList + "?subject=Hello%20World";
-                    URI mailto = new URI("mailto:" + recipientList + "?subject=Hello%20World");
+                    URI mailto = new URI("mailto:" +  recipientList + "?subject=Hello%20World");
                     desktop.mail(mailto);
                 } catch (URISyntaxException | IOException e) {
                     e.printStackTrace();
@@ -75,7 +74,7 @@ public class EmailCommand extends Command {
 
         }
 
-        return new CommandResult(String.format(MESSAGE_DISPLAY_EMAIL_SUCCESS, targetIndices.size()));
+        return new CommandResult(String.format(MESSAGE_DISPLAY_EMAIL_SUCCESS, recipientList));
 
     }
 
