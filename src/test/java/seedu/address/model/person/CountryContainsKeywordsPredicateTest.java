@@ -40,25 +40,11 @@ public class CountryContainsKeywordsPredicateTest {
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
-
-    @Test
-    public void test_countryContainsKeywords_returnsTrue() {
-        // One email domain
-        Predicate<ReadOnlyPerson> predicate = new CountryContainsKeywordsPredicate(Collections.singletonList("Singapore"));
-        assertTrue(predicate.test(new PersonBuilder().withCountry("65").build()));
-
-        // Multiple country  domains
-        predicate = new CountryContainsKeywordsPredicate(Arrays.asList("Singapore", "Thailand"));
-        assertTrue(predicate.test(new PersonBuilder().withCountry("65").build()));
-
-
-    }
-
     @Test
     public void test_countryDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         CountryContainsKeywordsPredicate predicate = new CountryContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new PersonBuilder().withCountry("Singapore").build()));
+        assertFalse(predicate.test(new PersonBuilder().withCountry("65").build()));
 
         // Non-matching keyword
         predicate = new CountryContainsKeywordsPredicate(Arrays.asList("China"));

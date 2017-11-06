@@ -87,20 +87,20 @@ public class BrowserPanel extends UiPart<Region> {
      * Opens the email window  via a cross platform .
      */
     public void loadEmail() throws URISyntaxException, IOException {
-//
-//        if (Desktop.isDesktopSupported()) {
-//            Desktop desktop = Desktop.getDesktop();
-//            if (desktop.isSupported(Desktop.Action.MAIL)) {
-//                try {
-//                    URI mailto = new URI("mailto:?subject=Hello%20World");
-//                    desktop.mail(mailto);
-//                } catch (URISyntaxException | IOException e) {
-//                    e.printStackTrace();
-//
-//                }
-//            }
-//
-//        }
+
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.MAIL)) {
+                try {
+                    URI mailto = new URI("mailto:?subject=Hello%20World");
+                    desktop.mail(mailto);
+                } catch (URISyntaxException | IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }
     }
 
     /**
