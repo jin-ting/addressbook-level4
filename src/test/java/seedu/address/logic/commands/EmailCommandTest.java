@@ -20,19 +20,6 @@ public class EmailCommandTest {
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
 
 
-    @Test
-    public void assertExecutionSuccess() throws CommandException {
-        EmailCommand command = new EmailCommand();
-
-        try {
-            CommandResult commandResult = command.execute();
-            assertEquals(MESSAGE_DISPLAY_EMAIL_SUCCESS, commandResult.feedbackToUser);
-        } catch (CommandException ce) {
-            throw new IllegalArgumentException("Execution of command should not fail.", ce);
-        }
-
-    }
-
 }
 
 

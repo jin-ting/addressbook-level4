@@ -1,9 +1,5 @@
 package seedu.address.ui;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.logging.Logger;
 
@@ -18,7 +14,6 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.ShowCalendarRequestEvent;
-import seedu.address.commons.events.ui.ShowEmailRequestEvent;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.ReadOnlyPerson;
 
@@ -83,25 +78,6 @@ public class BrowserPanel extends UiPart<Region> {
         loadPage("https://www.timeanddate.com/calendar/");
     }
 
-    /**
-     * Opens the email window  via a cross platform .
-     */
-    public void loadEmail() throws URISyntaxException, IOException {
-
-        if (Desktop.isDesktopSupported()) {
-            Desktop desktop = Desktop.getDesktop();
-            if (desktop.isSupported(Desktop.Action.MAIL)) {
-                try {
-                    URI mailto = new URI("mailto:?subject=Hello%20World");
-                    desktop.mail(mailto);
-                } catch (URISyntaxException | IOException e) {
-                    e.printStackTrace();
-
-                }
-            }
-
-        }
-    }
 
     /**
      * Frees resources allocated to the browser.
@@ -124,10 +100,4 @@ public class BrowserPanel extends UiPart<Region> {
         loadCalendar();
     }
 
-    //@@author jin-ting
-    @Subscribe
-    private void handleEmailRequestEvent(ShowEmailRequestEvent event) throws IOException, URISyntaxException {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        loadEmail();
-    }
 }
