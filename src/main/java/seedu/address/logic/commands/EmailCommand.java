@@ -77,8 +77,6 @@ public class EmailCommand extends Command {
 
         }
 
-
-        EventsCenter.getInstance().post(new ShowEmailRequestEvent());
         return new CommandResult(String.format(MESSAGE_DISPLAY_EMAIL_SUCCESS, targetIndices.size()));
 
     }
