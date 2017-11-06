@@ -22,6 +22,7 @@ import seedu.address.model.schedule.Schedule;
 import seedu.address.model.schedule.ScheduleDate;
 
 //@@author CT15
+
 /**
  * Schedules an Activity with a person.
  */
@@ -61,7 +62,7 @@ public class ScheduleCommand extends UndoableCommand {
 
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
 
-        for (Index index: indices) {
+        for (Index index : indices) {
 
             if (index.getZeroBased() >= lastShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);

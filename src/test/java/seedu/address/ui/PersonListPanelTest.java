@@ -21,7 +21,8 @@ public class PersonListPanelTest extends GuiUnitTest {
     private static final ObservableList<ReadOnlyPerson> TYPICAL_PERSONS =
             FXCollections.observableList(getTypicalPersons());
 
-    private static final JumpToListRequestEvent JUMP_TO_SECOND_EVENT = new JumpToListRequestEvent(INDEX_SECOND_PERSON);
+    private static final JumpToListRequestEvent
+            JUMP_TO_SECOND_EVENT = new JumpToListRequestEvent(INDEX_SECOND_PERSON);
 
     private PersonListPanelHandle personListPanelHandle;
 
@@ -33,6 +34,7 @@ public class PersonListPanelTest extends GuiUnitTest {
         personListPanelHandle = new PersonListPanelHandle(getChildNode(personListPanel.getRoot(),
                 PersonListPanelHandle.PERSON_LIST_VIEW_ID));
     }
+
 
     @Test
     public void display() {
@@ -47,6 +49,7 @@ public class PersonListPanelTest extends GuiUnitTest {
     }
 
     @Test
+
     public void handleJumpToListRequestEvent() {
         postNow(JUMP_TO_SECOND_EVENT);
         guiRobot.pauseForHuman();

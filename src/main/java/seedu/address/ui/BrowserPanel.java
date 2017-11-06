@@ -1,5 +1,9 @@
 package seedu.address.ui;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.logging.Logger;
 
@@ -42,6 +46,7 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     //@@author 17navasaw
+
     /**
      * Loads google maps web page locating person's address.
      */
@@ -70,6 +75,7 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     //@@author jin-ting
+
     /**
      * Opens the Calendar window in the browser panel.
      */
@@ -78,10 +84,23 @@ public class BrowserPanel extends UiPart<Region> {
     }
 
     /**
-     * Opens the email window in the browser panel.
+     * Opens the email window  via a cross platform .
      */
-    public void loadEmail() {
-        loadPage("https://www.google.com/gmail/");
+    public void loadEmail() throws URISyntaxException, IOException {
+//
+//        if (Desktop.isDesktopSupported()) {
+//            Desktop desktop = Desktop.getDesktop();
+//            if (desktop.isSupported(Desktop.Action.MAIL)) {
+//                try {
+//                    URI mailto = new URI("mailto:?subject=Hello%20World");
+//                    desktop.mail(mailto);
+//                } catch (URISyntaxException | IOException e) {
+//                    e.printStackTrace();
+//
+//                }
+//            }
+//
+//        }
     }
 
     /**
@@ -107,7 +126,7 @@ public class BrowserPanel extends UiPart<Region> {
 
     //@@author jin-ting
     @Subscribe
-    private void handleEmailRequestEvent(ShowEmailRequestEvent event) {
+    private void handleEmailRequestEvent(ShowEmailRequestEvent event) throws IOException, URISyntaxException {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadEmail();
     }
