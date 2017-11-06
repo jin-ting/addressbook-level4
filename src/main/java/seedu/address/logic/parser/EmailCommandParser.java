@@ -32,6 +32,9 @@ public class EmailCommandParser implements Parser<EmailCommand> {
             String trimmedArgs = args.trim();
             String[] indicesInString = trimmedArgs.split("\\s+");
 
+            //if it is by range
+
+
             Set<Index> indices = new HashSet<>();
             for (String indexString : indicesInString) {
                 Index index = ParserUtil.parseIndex(indexString);
