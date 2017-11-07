@@ -25,17 +25,13 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.ReadOnlyPerson;
 
 //@@author jin-ting
-<<<<<<< HEAD
 
-=======
->>>>>>> a75d9edbae37e942ed48918372c1411f329bea30
 /**
  * Contains integration tests (interaction with the Model) for {@code EmailCommand}.
  */
 public class EmailCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-<<<<<<< HEAD
 //
 //    @Test
 //    public void execute_validIndexUnfilteredList_success() throws Exception {
@@ -72,21 +68,7 @@ public class EmailCommandTest {
         assertFalse(emailAliceCommand.equals(null));
 
         // different person -> returns false
-           assertFalse(emailAliceCommand.equals(emailBobCommand));
-=======
-
-    @Test
-    public void execute_validIndexUnfilteredList_success() throws Exception {
-        ReadOnlyPerson personToEmail = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        EmailCommand emailCommand = prepareCommand(INDEX_FIRST_PERSON);
-
-        String expectedMessage = String.format(EmailCommand.MESSAGE_DISPLAY_EMAIL_SUCCESS, personToEmail.getEmails().toString());
-
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-      //  expectedModel.deletePerson(personToEmail);
-
-        assertCommandSuccess(emailCommand, model, expectedMessage, expectedModel);
->>>>>>> a75d9edbae37e942ed48918372c1411f329bea30
+        assertFalse(emailAliceCommand.equals(emailBobCommand));
     }
 
     /**
@@ -101,8 +83,3 @@ public class EmailCommandTest {
         return emailCommand;
     }
 }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> a75d9edbae37e942ed48918372c1411f329bea30
