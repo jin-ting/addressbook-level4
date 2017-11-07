@@ -20,7 +20,7 @@ import seedu.address.model.person.email.Email;
 //@@author jin-ting
 
 /**
- * Locates a person's address by showing its location on Google Maps.
+ * Opening email application to send email to contatcs.
  */
 public class EmailCommand extends Command {
 
