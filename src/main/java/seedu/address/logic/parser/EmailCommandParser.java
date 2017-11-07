@@ -25,12 +25,11 @@ public class EmailCommandParser implements Parser<EmailCommand> {
 
     public EmailCommand parse(String args) throws ParseException {
         requireNonNull(args);
+        String trimmedArgs = args.trim();
+        String[] indicesInString = trimmedArgs.split("\\s+");
 
 
         try {
-            String trimmedArgs = args.trim();
-            String[] indicesInString = trimmedArgs.split("\\s+");
-
             Set<Index> indices = new HashSet<>();
             for (String indexString : indicesInString) {
                 Index index = ParserUtil.parseIndex(indexString);

@@ -64,7 +64,7 @@ public class EmailCommand extends Command {
             Desktop desktop = Desktop.getDesktop();
             if (desktop.isSupported(Desktop.Action.MAIL)) {
                 try {
-                    URI mailto = new URI("mailto:" +  recipientList + "?subject=Hello%20World");
+                    URI mailto = new URI("mailto:" + recipientList + "?subject=Hello%20World");
                     desktop.mail(mailto);
                 } catch (URISyntaxException | IOException e) {
                     e.printStackTrace();
@@ -76,13 +76,13 @@ public class EmailCommand extends Command {
 
         return new CommandResult(String.format(MESSAGE_DISPLAY_EMAIL_SUCCESS, recipientList));
 
+
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof EmailCommand // instanceof handles nulls
-                && targetIndices.equals(((EmailCommand) other).targetIndices)); // state check
+                || (other instanceof EmailCommand); // instanceof handles nulls
     }
 
 }

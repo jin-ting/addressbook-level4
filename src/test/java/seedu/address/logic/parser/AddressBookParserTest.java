@@ -7,6 +7,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CalendarCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.CopyCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -266,10 +268,33 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(CalendarCommand.COMMAND_WORD) instanceof CalendarCommand);
     }
 
+
     @Test
-    public void parseEmail_calendar() throws Exception {
-        assertTrue(parser.parseCommand(EmailCommand.COMMAND_WORD) instanceof EmailCommand);
+    public void parseCommand_Email() throws Exception {
+        EmailCommand command = (EmailCommand) parser.parseCommand(
+                EmailCommand.COMMAND_WORD + " " + "1");
+        EmailCommand commandUsingAlias = (EmailCommand) parser.parseCommand(
+                EmailCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
+       Set<Index> indices = new HashSet<>();
+        indices.add(INDEX_FIRST_PERSON);
+
+        assertEquals(new EmailCommand(indices), command);
+        assertEquals(new EmailCommand(indices), commandUsingAlias);
     }
+
+    @Test
+    public void parseCommand_copy() throws Exception {
+        CopyCommand command = (CopyCommand) parser.parseCommand(
+                CopyCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        CopyCommand commandUsingAlias = (CopyCommand) parser.parseCommand(
+                CopyCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
+        ArrayList<Index> indices = new ArrayList<>();
+        indices.add(INDEX_FIRST_PERSON);
+
+        assertEquals(new CopyCommand(indices), command);
+        assertEquals(new CopyCommand(indices), commandUsingAlias);
+    }
+
 
     //@@author
     @Test
