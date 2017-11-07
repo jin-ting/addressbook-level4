@@ -2,6 +2,8 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,7 +41,7 @@ public class EmailCommandParser implements Parser<EmailCommand> {
             return new EmailCommand(indices);
 
         } catch (IllegalValueException ive) {
-            throw new ParseException(ive.getMessage(), ive);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
         }
     }
 

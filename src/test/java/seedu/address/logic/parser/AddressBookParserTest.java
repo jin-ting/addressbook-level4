@@ -7,7 +7,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -270,12 +269,12 @@ public class AddressBookParserTest {
 
 
     @Test
-    public void parseCommand_Email() throws Exception {
+    public void parseCommand_email() throws Exception {
         EmailCommand command = (EmailCommand) parser.parseCommand(
                 EmailCommand.COMMAND_WORD + " " + "1");
         EmailCommand commandUsingAlias = (EmailCommand) parser.parseCommand(
                 EmailCommand.COMMAND_ALIAS + " " + INDEX_FIRST_PERSON.getOneBased());
-       Set<Index> indices = new HashSet<>();
+        Set<Index> indices = new HashSet<>();
         indices.add(INDEX_FIRST_PERSON);
 
         assertEquals(new EmailCommand(indices), command);
