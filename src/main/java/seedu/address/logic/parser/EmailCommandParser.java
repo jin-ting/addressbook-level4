@@ -1,16 +1,17 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.EmailCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-
-
 
 //@@author jin-ting
 
@@ -18,6 +19,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new HelpCommand object
  */
 public class EmailCommandParser implements Parser<EmailCommand> {
+
+    private static final Pattern EMAIL_RANGE_FORMAT = Pattern.compile("(?<firstValue>\\w+-)(?<lastValue>.*)");
+
 
     /**
      * Parses the given {@code String} of input arguments
@@ -33,10 +37,17 @@ public class EmailCommandParser implements Parser<EmailCommand> {
             String[] indicesInString = trimmedArgs.split("\\s+");
 
             //if it is by range
-
-
             Set<Index> indices = new HashSet<>();
             for (String indexString : indicesInString) {
+                       if (indexString.contains("-"))]{
+                    final Matcher matcher = EMAIL_RANGE_FORMAT.matcher(indexString.trim());
+                    if (!matcher.matches()) {
+                        throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EmailCommand.MESSAGE_USAGE));
+                    }
+
+                    final String firstValue = matcher.group("firstValue");
+                    final String lastValue = matcher.group("lastValue");
+                }
                 Index index = ParserUtil.parseIndex(indexString);
                 indices.add(index);
             }
