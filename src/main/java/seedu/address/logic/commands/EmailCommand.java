@@ -58,7 +58,6 @@ public class EmailCommand extends Command {
             }
         }
 
-
         String recipientList = String.join(",", recipientSet);
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
