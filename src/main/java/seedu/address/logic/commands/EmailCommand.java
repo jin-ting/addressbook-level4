@@ -27,8 +27,8 @@ public class EmailCommand extends Command {
     public static final String COMMAND_WORD = "email";
     public static final String COMMAND_ALIAS = "m";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " (alias: " + COMMAND_ALIAS + ")"
-            + ":Opening up email platform to send email to person(s)\n"
-            + "Parameters: INDEX "
+            + ": Opening up email platform to send email to person(s)\n"
+            + "Parameters: INDEX\n"
             + MESSAGE_GET_MORE_HELP;
 
     public static final String MESSAGE_DISPLAY_EMAIL_SUCCESS = "Email send to %1$s";
@@ -75,13 +75,13 @@ public class EmailCommand extends Command {
 
         return new CommandResult(String.format(MESSAGE_DISPLAY_EMAIL_SUCCESS, recipientList));
 
-
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof EmailCommand); // instanceof handles nulls
+                || (other instanceof EmailCommand // instanceof handles nulls
+         && this.targetIndices.equals(((EmailCommand) other).targetIndices));
     }
 
 }
