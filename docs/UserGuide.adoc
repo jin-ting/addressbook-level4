@@ -55,6 +55,17 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Command words can be replaced by their specified aliases e.g. `delete INDEX` is the same as `d INDEX`.
 ====
 
+==== Finding persons by any field : `find` [Since v1.2 and v1.4]
+
+==== Emailing persons : `email` [Since v1.5]
+
+==== Opening calendar : `calendar` [Since v1.3]
+
+==== Deleting person(s) : `delete` [Last updated in v1.1]
+
+==== Adding a person: `add` [Last updated in v1.3]
+
+
 === Viewing help : `help`
 
 Alias: `h`
