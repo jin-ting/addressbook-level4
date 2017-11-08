@@ -26,7 +26,6 @@ public class EmailCommandParserTest {
         Set<Index> indices = new HashSet<>();
         indices.add(INDEX_FIRST_PERSON);
         indices.add(INDEX_SECOND_PERSON);
-
         assertParseSuccess(parser, "1 2", new EmailCommand(indices));
     }
 

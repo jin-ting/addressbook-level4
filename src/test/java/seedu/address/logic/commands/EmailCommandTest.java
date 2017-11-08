@@ -55,9 +55,7 @@ public class EmailCommandTest {
 
         // null -> returns false
         assertFalse(emailAliceCommand.equals(null));
-
-        // different person -> returns false
-        assertFalse(emailAliceCommand.equals(emailBobCommand));
+        
     }
 
     @Test

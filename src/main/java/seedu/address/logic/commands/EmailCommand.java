@@ -80,8 +80,7 @@ public class EmailCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof EmailCommand // instanceof handles nulls
-                && this.targetIndices.equals(((EmailCommand) other).targetIndices));
+                || (other instanceof EmailCommand); // instanceof handles nulls
     }
 
 }
