@@ -266,7 +266,6 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(CalendarCommand.COMMAND_WORD) instanceof CalendarCommand);
     }
 
-
     @Test
     public void parseCommand_copy() throws Exception {
         CopyCommand command = (CopyCommand) parser.parseCommand(

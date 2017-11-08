@@ -31,7 +31,7 @@ public class EmailCommand extends Command {
             + "Parameters: INDEX\n"
             + MESSAGE_GET_MORE_HELP;
 
-    public static final String MESSAGE_DISPLAY_EMAIL_SUCCESS = "Email send to %1$s";
+    public static final String MESSAGE_DISPLAY_EMAIL_SUCCESS = "Sending email to %1$s";
 
     private Set<String> recipientSet = new HashSet<>();
 
@@ -81,7 +81,7 @@ public class EmailCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof EmailCommand // instanceof handles nulls
-         && this.targetIndices.equals(((EmailCommand) other).targetIndices));
+                && this.targetIndices.equals(((EmailCommand) other).targetIndices));
     }
 
 }
